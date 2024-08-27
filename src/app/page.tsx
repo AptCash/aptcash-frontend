@@ -34,19 +34,14 @@ export default function Home() {
                 className="text-muted-foreground hover:text-foreground"
                 prefetch={false}
               >
-                Contacts
+                Contact
               </Link>
-              <Link
-                href="#"
-                className="text-muted-foreground hover:text-foreground"
-                prefetch={false}
-              >
-                DeFi
+              <Link href="/login">
+                <Button>
+                  Login
+                  <Icons.arrowRight className="ml-2 h-4 w-4" />
+                </Button>
               </Link>
-              <Button>
-                <Icons.Text className="mr-2 h-4 w-4" />
-                Telegram
-              </Button>
             </nav>
           </div>
         </header>
