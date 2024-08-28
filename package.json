@@ -29,6 +29,9 @@
     "@radix-ui/react-toggle": "^1.1.0",
     "@radix-ui/react-toggle-group": "^1.1.0",
     "@radix-ui/react-tooltip": "^1.1.2",
+    "axios": "^1.7.5",
+    "braintree-web": "3.107.0-rp1-beta.1",
+    "braintree-web-drop-in": "^1.43.0",
     "class-variance-authority": "^0.7.0",
     "clsx": "^2.1.1",
     "cmdk": "1.0.0",
@@ -47,6 +50,8 @@
     "zod": "^3.23.8"
   },
   "devDependencies": {
+    "@types/braintree-web": "^3.96.12",
+    "@types/braintree-web-drop-in": "^1.39.3",
     "@types/node": "^20",
     "@types/react": "^18",
     "@types/react-dom": "^18",
