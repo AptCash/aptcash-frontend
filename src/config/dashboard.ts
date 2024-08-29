@@ -20,6 +20,11 @@ export const dashboardConfig: DashboardConfig = {
       icon: "post",
     },
     {
+      title: "Transactions",
+      href: "/dashboard/transactions",
+      icon: "post",
+    },
+    {
       title: "API Keys",
       href: "/dashboard/keys",
       icon: "billing",
@@ -28,6 +33,7 @@ export const dashboardConfig: DashboardConfig = {
       title: "Settings",
       href: "/dashboard/settings",
       icon: "settings",
+      disabled: true,
     },
     {
       title: "Payments",

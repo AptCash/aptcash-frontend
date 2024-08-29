@@ -84,7 +84,9 @@ export default function PaymentsPage() {
 
       const data = res.data as {
         message: string;
+        id: string;
         txHash: string;
+        gatewayId: string;
       };
 
       setTxHash(data.txHash);
