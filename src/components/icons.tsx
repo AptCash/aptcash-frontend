@@ -38,7 +38,7 @@ import {
 export type Icon = LucideIcon;
 
 export const Icons = {
-  logo: Command,
+  // logo: Command,
   close: X,
   spinner: Loader2,
   chevronLeft: ChevronLeft,
@@ -88,4 +88,53 @@ export const Icons = {
   ),
   twitter: Twitter,
   check: Check,
+
+  logo: ({ ...props }: LucideProps) => (
+    <svg
+      viewBox="55 146.2656 89.1992 78"
+      width="30"
+      height="26"
+      xmlns="http://www.w3.org/2000/svg"
+      {...props}
+    >
+      <defs>
+        <clipPath id="e156d06b34">
+          <path
+            d="M 84 146.265625 L 144.222656 146.265625 L 144.222656 224.265625 L 84 224.265625 Z M 84 146.265625 "
+            clip-rule="nonzero"
+          />
+        </clipPath>
+        <clipPath id="891a6be1d1">
+          <path
+            d="M 55 203 L 94 203 L 94 224.265625 L 55 224.265625 Z M 55 203 "
+            clip-rule="nonzero"
+          />
+        </clipPath>
+      </defs>
+      <g>
+        <path
+          fill="#0082a5"
+          d="M 142.886719 223.1875 L 83.253906 197.039062 L 70.835938 197.398438 L 80.464844 179.425781 L 89.355469 179.425781 Z M 142.886719 223.1875 "
+          fill-opacity="1"
+          fill-rule="evenodd"
+        />
+        <g clip-path="url(#e156d06b34)">
+          <path
+            fill="#02b4dd"
+            d="M 144.199219 224.265625 L 91.214844 172.390625 L 84.921875 172.390625 L 99.914062 146.265625 Z M 144.199219 224.265625 "
+            fill-opacity="1"
+            fill-rule="evenodd"
+          />
+        </g>
+        <g clip-path="url(#891a6be1d1)">
+          <path
+            fill="#004f6d"
+            d="M 81.671875 203.417969 L 93.074219 207.136719 L 55 224.074219 L 67.226562 203.144531 Z M 81.671875 203.417969 "
+            fill-opacity="1"
+            fill-rule="evenodd"
+          />
+        </g>
+      </g>
+    </svg>
+  ),
 };

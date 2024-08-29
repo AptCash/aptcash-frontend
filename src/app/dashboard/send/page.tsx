@@ -108,7 +108,10 @@ export default function PaymentsPage() {
 
   return (
     <DashboardShell>
-      <DashboardHeader heading="Payments Test" text="Page to test payments." />
+      <DashboardHeader
+        heading="Send APT"
+        text="Page to send APT through Fiat/Paypal"
+      />
 
       {!clientToken && <p>Loading...</p>}
 
