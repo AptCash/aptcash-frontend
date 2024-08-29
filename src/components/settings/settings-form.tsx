@@ -39,6 +39,10 @@ const settingFormSchema = z.object({
 });
 
 type ProfileFormValues = z.infer<typeof settingFormSchema>;
+type TWalletData = {
+  address: string;
+  publicKey: string;
+};
 
 const defaultValues: Partial<ProfileFormValues> = {};
 
@@ -90,6 +94,48 @@ export default function SettingsForm() {
 
     loadData();
   }, []);
+
+  function getAptosWallet() {
+    if ("aptos" in window) {
+      return window.aptos;
+    } else {
+      window.open("https://petra.app/", `_blank`);
+    }
+  }
+
+  async function connectToPetraWallet() {
+    const isPetraInstalled = window?.aptos;
+
+    const wallet: any = getAptosWallet();
+
+    try {
+      const response = (await wallet.connect()) as TWalletData;
+      const account = (await wallet.account()) as TWalletData;
+
+      if (!account.address) {
+        throw new Error("Failed to connect to Petra Wallet");
+      }
+
+      form.setValue("walletAddress", account.address);
+    } catch (error) {
+      toast({
+        variant: "destructive",
+        title: "Failed to connect to Petra Wallet",
+      });
+    }
+  }
+
+  async function disconnectToPetraWallet() {
+    const isPetraInstalled = window?.aptos;
+
+    if (!isPetraInstalled) {
+      return;
+    }
+
+    const wallet: any = getAptosWallet();
+
+    await wallet.disconnect();
+  }
 
   return (
     <Form {...form}>
@@ -171,12 +217,22 @@ export default function SettingsForm() {
 
                   <Button
                     type="button"
-                    variant="outline"
+                    variant="secondary"
                     size="sm"
-                    className=""
-                    onClick={() => {}}
+                    className="h-10"
+                    onClick={connectToPetraWallet}
                   >
                     Connect Wallet
+                  </Button>
+
+                  <Button
+                    type="button"
+                    variant="secondary"
+                    size="sm"
+                    className="h-10"
+                    onClick={connectToPetraWallet}
+                  >
+                    Disconnect Wallet
                   </Button>
                 </div>
               </FormControl>

@@ -10,6 +10,7 @@ import {
   CardFooter,
 } from "@/components/ui/card";
 import { Icons } from "@/components/icons";
+import { Globe } from "@/components/landing/landing-globe";
 
 export default function Home() {
   return (
@@ -18,8 +19,8 @@ export default function Home() {
         <header className="sticky top-0 z-40 border-b bg-background">
           <div className="container mx-auto flex h-16 max-w-6xl items-center justify-between px-4">
             <Link href="#" className="flex items-center gap-2" prefetch={false}>
-              <Icons.Aperture className="h-8 w-8 text-primary" />
-              <span className="font-bold text-primary">AptCash</span>
+              <Icons.logo className="h-8 w-8 text-primary" />
+              <span className="font-bold text-primary">APTCash</span>
             </Link>
             <nav className="flex items-center gap-4">
               <Link
@@ -69,15 +70,20 @@ export default function Home() {
                   </Button>
                 </div>
               </div>
-              <div>
-                <Image
+              {/* <div> */}
+              {/* <Image
                   src="/landing-hero.svg"
                   alt="AptCash Hero Image"
                   width={600}
                   height={400}
                   className="rounded-lg"
                   style={{ aspectRatio: "600/400", objectFit: "cover" }}
-                />
+                /> */}
+
+              {/* <Globe /> */}
+              {/* </div> */}
+              <div className="flex h-[600px] w-[600px] justify-center md:mt-0 md:justify-start">
+                <Globe />
               </div>
             </div>
           </div>

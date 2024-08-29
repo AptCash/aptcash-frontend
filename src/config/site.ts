@@ -1,7 +1,7 @@
 import { SiteConfig } from "@/../types";
 
 export const siteConfig: SiteConfig = {
-  name: "AptCash",
+  name: "APTCash",
   description: "INR to APT Payment Gateway",
   url: "",
   ogImage: "",
