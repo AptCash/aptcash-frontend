@@ -9,23 +9,48 @@ import { Icons } from "@/components/icons";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
+import { axiosInstance } from "@/lib/axios";
+import { toast } from "../ui/use-toast";
 
 interface UserAuthFormProps extends React.HTMLAttributes<HTMLDivElement> {}
 
 export function UserAuthForm({ className, ...props }: UserAuthFormProps) {
-  const [isLoading, setIsLoading] = React.useState<boolean>(false);
-
   const router = useRouter();
+
+  const [email, setEmail] = React.useState<string>("test@gmail.com");
+  const [password, setPassowrd] = React.useState<string>("123");
+
+  const [isLoading, setIsLoading] = React.useState<boolean>(false);
 
   async function onSubmit(event: React.SyntheticEvent) {
     event.preventDefault();
     setIsLoading(true);
 
-    router.replace("/dashboard");
+    try {
+      const res = await axiosInstance.post("/auth/login", {
+        email,
+        password,
+      });
 
-    setTimeout(() => {
+      const data = res.data as {
+        access_token: string;
+      };
+
+      if (!data.access_token) {
+        throw new Error("Invalid access token");
+      }
+
+      localStorage.setItem("access_token", data.access_token);
+
+      router.replace("/dashboard");
+    } catch (e) {
+      toast({
+        title: "Error",
+        variant: "destructive",
+      });
+    } finally {
       setIsLoading(false);
-    }, 3000);
+    }
   }
 
   return (
@@ -44,6 +69,24 @@ export function UserAuthForm({ className, ...props }: UserAuthFormProps) {
               autoComplete="email"
               autoCorrect="off"
               disabled={isLoading}
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+            />
+          </div>
+          <div className="grid gap-1">
+            <Label className="sr-only" htmlFor="email">
+              Password
+            </Label>
+            <Input
+              id="password"
+              placeholder="Password"
+              type="password"
+              autoCapitalize="none"
+              autoComplete="password"
+              autoCorrect="off"
+              disabled={isLoading}
+              value={password}
+              onChange={(e) => setPassowrd(e.target.value)}
             />
           </div>
           <Button disabled={isLoading}>
@@ -64,7 +107,7 @@ export function UserAuthForm({ className, ...props }: UserAuthFormProps) {
           </span>
         </div>
       </div>
-      <Button variant="outline" type="button" disabled={isLoading}>
+      <Button variant="outline" type="button" disabled={true && isLoading}>
         {isLoading ? (
           <Icons.spinner className="mr-2 h-4 w-4 animate-spin" />
         ) : (
