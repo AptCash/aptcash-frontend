@@ -14,10 +14,15 @@ import { useEffect, useState } from "react";
 import { TUserTransaction } from "../../../types/entities";
 import { axiosInstance } from "@/lib/axios";
 import { toast } from "../ui/use-toast";
+import Link from "next/link";
+
+import { formatDateString, shortenLongStrings } from "@/lib/utils";
 
 export default function UserTransactionsTable() {
   const [userTxns, setUserTxns] = useState<TUserTransaction[]>([]);
   const [isLoading, setIsLoading] = useState(false);
+
+  const [totalAmt, setTotalAmt] = useState<number | null>(null);
 
   useEffect(() => {
     async function loadData() {
@@ -27,7 +32,13 @@ export default function UserTransactionsTable() {
         const res = await axiosInstance.get("/transactions/user/all");
         const data = res.data as TUserTransaction[];
 
+        const total = data.reduce(
+          (acc, txn) => acc + txn.aptosPayment.aptosAmount,
+          0
+        );
+
         setUserTxns(data);
+        setTotalAmt(total);
       } catch (error) {
         toast({
           variant: "destructive",
@@ -45,6 +56,8 @@ export default function UserTransactionsTable() {
     return <p>Loading...</p>;
   }
 
+  // https://explorer.aptoslabs.com/txn
+
   return (
     <Table>
       <TableCaption>A list of your recent transactions.</TableCaption>
@@ -54,16 +67,25 @@ export default function UserTransactionsTable() {
           <TableHead>Status</TableHead>
           <TableHead>Date</TableHead>
           <TableHead>TxHash</TableHead>
-          <TableHead className="text-right">+APT</TableHead>
+          <TableHead className="text-right">APT</TableHead>
         </TableRow>
       </TableHeader>
       <TableBody>
         {userTxns.map((txn, i) => (
           <TableRow key={i}>
-            <TableCell className="font-medium">{txn.id}</TableCell>
+            <TableCell className="font-medium">
+              {shortenLongStrings(txn.id, 5)}
+            </TableCell>
             <TableCell>{txn.status}</TableCell>
-            <TableCell>{txn.createdAt}</TableCell>
-            <TableCell>{txn.aptosPayment.txHash}</TableCell>
+            <TableCell>{formatDateString(txn.createdAt)}</TableCell>
+            <TableCell>
+              <Link
+                href={`https://explorer.aptoslabs.com/txn/${txn.aptosPayment.txHash}?network=testnet`}
+                target="_blank"
+              >
+                {shortenLongStrings(txn.aptosPayment.txHash, 5)}
+              </Link>
+            </TableCell>
             <TableCell className="text-right">
               +{txn.aptosPayment.aptosAmount}
             </TableCell>
@@ -73,7 +95,7 @@ export default function UserTransactionsTable() {
       <TableFooter>
         <TableRow>
           <TableCell colSpan={4}>Total</TableCell>
-          <TableCell className="text-right">$2,500.00</TableCell>
+          <TableCell className="text-right">+{totalAmt}</TableCell>
         </TableRow>
       </TableFooter>
     </Table>
