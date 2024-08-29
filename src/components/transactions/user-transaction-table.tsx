@@ -37,8 +37,8 @@ export default function UserTransactionsTable() {
           0
         );
 
-        setUserTxns(data);
-        setTotalAmt(total);
+        setUserTxns(data.toReversed());
+        setTotalAmt(parseFloat(total.toFixed(2)));
       } catch (error) {
         toast({
           variant: "destructive",

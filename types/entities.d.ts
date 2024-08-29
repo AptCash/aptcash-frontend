@@ -24,3 +24,14 @@ export type TUserTransaction = {
   fiatPayment: TFiatPayment;
   aptosPayment: TAptosPayment;
 };
+
+export type TUser = {
+  id: string;
+  email: string;
+  apiKey: string;
+  walletAddress: string;
+  name: string;
+  avatar: string | null;
+  createdAt: string;
+  updatedAt: string;
+};

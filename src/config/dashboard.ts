@@ -30,9 +30,9 @@ export const dashboardConfig: DashboardConfig = {
       icon: "settings",
     },
     {
-      title: "Payments",
-      href: "/dashboard/payment",
-      icon: "settings",
+      title: "Send",
+      href: "/dashboard/send",
+      icon: "Send",
     },
   ],
 };
