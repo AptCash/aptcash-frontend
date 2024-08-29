@@ -4,6 +4,8 @@ import { redirect } from "next/navigation";
 import { getCurrentUser } from "@/lib/session";
 import { DashboardHeader } from "@/components/header";
 import { DashboardShell } from "@/components/shell";
+import { DashboardBarChart } from "@/components/dashboard/bar-chart";
+import { DashboardLineChart } from "@/components/dashboard/line-chart";
 // import { UserNameForm } from "@/components/user-name-form"
 
 export const metadata = {
@@ -24,8 +26,9 @@ export default async function Dashboard() {
         heading="Dashboard"
         text="View data and statistics about your account."
       />
-      <div className="grid gap-10">
-        {/* <UserNameForm user={{ id: user.id, name: user.name || "" }} /> */}
+      <div className="grid gap-4">
+        <DashboardBarChart />
+        <DashboardLineChart />
       </div>
     </DashboardShell>
   );
