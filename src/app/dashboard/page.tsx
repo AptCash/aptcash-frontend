@@ -24,7 +24,7 @@ export default async function Dashboard() {
     <DashboardShell>
       <DashboardHeader
         heading="Dashboard"
-        text="View data and statistics about your account."
+        text="Data and statistics about your account."
       />
       <div className="grid gap-4">
         <DashboardBarChart />

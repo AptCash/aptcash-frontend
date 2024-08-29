@@ -17,23 +17,17 @@ export const dashboardConfig: DashboardConfig = {
     {
       title: "Dashboard",
       href: "/dashboard",
-      icon: "post",
+      icon: "Home",
     },
     {
       title: "Transactions",
       href: "/dashboard/transactions",
-      icon: "post",
-    },
-    {
-      title: "API Keys",
-      href: "/dashboard/keys",
-      icon: "billing",
+      icon: "CreditCard",
     },
     {
       title: "Settings",
       href: "/dashboard/settings",
       icon: "settings",
-      disabled: true,
     },
     {
       title: "Payments",

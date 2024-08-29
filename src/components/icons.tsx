@@ -30,6 +30,7 @@ import {
   Scan,
   Text,
   Wallet,
+  Home,
   type Icon as LucideIcon,
 } from "lucide-react";
 
@@ -64,6 +65,9 @@ export const Icons = {
   Scan,
   Text,
   Wallet,
+  Home,
+  CreditCard,
+
   gitHub: ({ ...props }: LucideProps) => (
     <svg
       aria-hidden="true"
