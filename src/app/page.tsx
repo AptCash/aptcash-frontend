@@ -22,7 +22,8 @@ export default function Home() {
               <Icons.logo className="h-8 w-8 text-primary" />
               <span className="font-bold text-primary">APTCash</span>
             </Link>
-            <nav className="flex items-center gap-4">
+
+            <nav className="flex items-center gap-12">
               <Link
                 href="#"
                 className="text-muted-foreground hover:text-foreground"
@@ -35,24 +36,20 @@ export default function Home() {
                 className="text-muted-foreground hover:text-foreground"
                 prefetch={false}
               >
-                Contact
+                Docs
               </Link>
               <Link href="/login">
-                <Button>
-                  Login
-                  <Icons.arrowRight className="ml-2 h-4 w-4" />
-                </Button>
+                <Button>Login</Button>
               </Link>
             </nav>
           </div>
         </header>
+
         <main className="flex-1">
           <div className="container mx-auto max-w-6xl px-4 py-8">
             <div className="grid grid-cols-1 gap-8 md:grid-cols-2">
               <div className="flex flex-col items-start justify-center gap-4">
-                <h1 className="text-4xl font-bold">
-                  Bridging Crypto and Finance
-                </h1>
+                <h1 className="text-4xl font-bold">INR to APT Instantly</h1>
                 <p className="text-muted-foreground">
                   AptCash is a decentralized payment platform built on the Aptos
                   blockchain, offering seamless integration of cryptocurrencies
@@ -61,12 +58,12 @@ export default function Home() {
                 </p>
                 <div className="flex gap-4">
                   <Button>
-                    <Icons.Wallet className="mr-2 h-4 w-4" />
+                    {/* <Icons.Wallet className="mr-2 h-4 w-4" /> */}
                     Get Started
                   </Button>
                   <Button variant="outline">
                     Learn more{" "}
-                    <Icons.LucideArrowRight className="ml-2 h-4 w-4" />
+                    {/* <Icons.LucideArrowRight className="ml-2 h-4 w-4" /> */}
                   </Button>
                 </div>
               </div>
