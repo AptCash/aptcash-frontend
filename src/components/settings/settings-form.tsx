@@ -47,7 +47,7 @@ type TWalletData = {
 const defaultValues: Partial<ProfileFormValues> = {};
 
 export default function SettingsForm() {
-  const [userData, setUserData] = useState<TUser>([]);
+  const [userData, setUserData] = useState<TUser | null>(null);
   const [isLoading, setIsLoading] = useState(false);
 
   const form = useForm<ProfileFormValues>({
@@ -104,6 +104,7 @@ export default function SettingsForm() {
   }
 
   async function connectToPetraWallet() {
+    // @ts-ignore
     const isPetraInstalled = window?.aptos;
 
     const wallet: any = getAptosWallet();
@@ -126,6 +127,7 @@ export default function SettingsForm() {
   }
 
   async function disconnectToPetraWallet() {
+    // @ts-ignore
     const isPetraInstalled = window?.aptos;
 
     if (!isPetraInstalled) {
