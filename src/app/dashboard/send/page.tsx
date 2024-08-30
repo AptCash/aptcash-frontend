@@ -1,16 +1,12 @@
 "use client";
 
-import { useRouter } from "next/navigation";
-
-import { getCurrentUser } from "@/lib/session";
 import { DashboardHeader } from "@/components/header";
 import { DashboardShell } from "@/components/shell";
 import { useEffect, useState } from "react";
 import { axiosInstance } from "@/lib/axios";
-import braintree from "braintree-web";
+
 import dropin, { Dropin } from "braintree-web-drop-in";
-import { set } from "react-hook-form";
-import axios from "axios";
+
 import { toast } from "@/components/ui/use-toast";
 import { Button } from "@/components/ui/button";
 import { Label } from "@/components/ui/label";
