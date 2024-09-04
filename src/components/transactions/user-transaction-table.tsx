@@ -33,7 +33,7 @@ export default function UserTransactionsTable() {
         const data = res.data as TUserTransaction[];
 
         const total = data.reduce(
-          (acc, txn) => acc + txn.aptosPayment.aptosAmount,
+          (acc, txn) => acc + (txn?.aptosPayment?.aptosAmount ?? 0),
           0
         );
 
