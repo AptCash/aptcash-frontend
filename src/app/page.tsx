@@ -49,8 +49,10 @@ export default function Home() {
           <div className="container mx-auto max-w-6xl px-4 py-8">
             <div className="grid grid-cols-1 gap-8 md:grid-cols-2">
               <div className="flex flex-col items-start justify-center gap-4">
-                <h1 className="text-4xl font-bold">INR to APT Instantly</h1>
-                <p className="text-muted-foreground">
+                <h1 className="font-heading text-4xl font-bold">
+                  INR TO APT INSTANTLY
+                </h1>
+                <p className="text-muted-foreground font-sans">
                   AptCash is a decentralized payment platform built on the Aptos
                   blockchain, offering seamless integration of cryptocurrencies
                   and fiat currencies. Manage your digital assets and make
