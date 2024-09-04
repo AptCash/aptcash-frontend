@@ -21,8 +21,8 @@ export type TUserTransaction = {
   status: string;
   createdAt: string;
   updatedAt: string;
-  fiatPayment: TFiatPayment;
-  aptosPayment: TAptosPayment;
+  fiatPayment?: TFiatPayment;
+  aptosPayment?: TAptosPayment;
 };
 
 export type TUser = {

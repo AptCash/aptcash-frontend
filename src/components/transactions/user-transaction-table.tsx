@@ -33,7 +33,7 @@ export default function UserTransactionsTable() {
         const data = res.data as TUserTransaction[];
 
         const total = data.reduce(
-          (acc, txn) => acc + (txn?.aptosPayment?.aptosAmount ?? 0),
+          (acc, txn) => acc + (txn.aptosPayment?.aptosAmount ?? 0),
           0
         );
 
@@ -83,11 +83,11 @@ export default function UserTransactionsTable() {
                 href={`https://explorer.aptoslabs.com/txn/${txn.aptosPayment.txHash}?network=testnet`}
                 target="_blank"
               >
-                {shortenLongStrings(txn.aptosPayment.txHash, 5)}
+                {shortenLongStrings(txn.aptosPayment?.txHash ?? "", 5)}
               </Link>
             </TableCell>
             <TableCell className="text-right">
-              +{txn.aptosPayment.aptosAmount}
+              +{txn.aptosPayment?.aptosAmount ?? "-"}
             </TableCell>
           </TableRow>
         ))}
