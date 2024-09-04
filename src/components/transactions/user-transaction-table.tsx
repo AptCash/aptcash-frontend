@@ -80,7 +80,11 @@ export default function UserTransactionsTable() {
             <TableCell>{formatDateString(txn.createdAt)}</TableCell>
             <TableCell>
               <Link
-                href={`https://explorer.aptoslabs.com/txn/${txn.aptosPayment.txHash}?network=testnet`}
+                href={
+                  txn.aptosPayment?.txHash
+                    ? `https://explorer.aptoslabs.com/txn/${txn.aptosPayment.txHash}?network=testnet`
+                    : "#"
+                }
                 target="_blank"
               >
                 {shortenLongStrings(txn.aptosPayment?.txHash ?? "", 5)}
