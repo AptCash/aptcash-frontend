@@ -14,6 +14,8 @@ import { Input } from "@/components/ui/input";
 import { Card } from "@/components/ui/card";
 import { Alert, AlertDescription } from "@/components/ui/alert";
 import { Separator } from "@/components/ui/separator";
+import Link from "next/link";
+import { Icons } from "@/components/icons";
 
 const metadata = {
   title: "Payments Page",
@@ -196,9 +198,10 @@ export default function PaymentsPage() {
 
         <Button
           onClick={handlePayment}
-          className="w-full"
+          className="w-full mt-2"
           disabled={isPaymentProcessing}
         >
+          {isPaymentProcessing && <Icons.spinner className="mr-2" />}
           Pay {aptAmount} APT
         </Button>
 
@@ -206,7 +209,13 @@ export default function PaymentsPage() {
           <Card className="mt-4 p-4">
             <p>
               <span className="font-bold">Transaction Hash: </span>
-              {txHash}
+              <Link
+                href={`https://explorer.aptoslabs.com/txn/${txHash}?network=testnet`}
+                target="_blank"
+                className="underline"
+              >
+                {txHash}
+              </Link>
             </p>
           </Card>
         )}

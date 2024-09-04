@@ -86,6 +86,7 @@ export default function UserTransactionsTable() {
                     : "#"
                 }
                 target="_blank"
+                className="underline"
               >
                 {shortenLongStrings(txn.aptosPayment?.txHash ?? "", 5)}
               </Link>
