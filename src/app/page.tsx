@@ -15,7 +15,7 @@ import { Globe } from "@/components/landing/landing-globe";
 export default function Home() {
   return (
     <>
-      <div className="flex min-h-screen flex-col bg-background">
+      <div className="flex min-h-screen flex-col bg-background font-heading">
         <header className="sticky top-0 z-40 border-b bg-background">
           <div className="container mx-auto flex h-16 max-w-6xl items-center justify-between px-4">
             <Link href="#" className="flex items-center gap-2" prefetch={false}>
@@ -50,23 +50,25 @@ export default function Home() {
             <div className="grid grid-cols-1 gap-8 md:grid-cols-2">
               <div className="flex flex-col items-start justify-center gap-4">
                 <h1 className="font-heading text-4xl font-bold">
-                  INR TO APT INSTANTLY
+                  <span className="text-[#05B4DD]">FIAT</span> TO{" "}
+                  <span className="text-[#05B4DD]">APT</span> INSTANTLY
                 </h1>
-                <p className="text-muted-foreground font-sans">
+                <p className="text-muted-foreground">
                   AptCash is a decentralized payment platform built on the Aptos
                   blockchain, offering seamless integration of cryptocurrencies
                   and fiat currencies. Manage your digital assets and make
                   instant, transparent transactions in just 5 seconds.
                 </p>
                 <div className="flex gap-4">
-                  <Button>
-                    {/* <Icons.Wallet className="mr-2 h-4 w-4" /> */}
-                    Get Started
-                  </Button>
-                  <Button variant="outline">
-                    Learn more{" "}
-                    {/* <Icons.LucideArrowRight className="ml-2 h-4 w-4" /> */}
-                  </Button>
+                  <Link href="/login">
+                    <Button>
+                      {/* <Icons.Wallet className="mr-2 h-4 w-4" /> */}
+                      Get Started
+                    </Button>
+                  </Link>
+                  <Link href="#demo">
+                    <Button variant="outline">Demo</Button>
+                  </Link>
                 </div>
               </div>
               {/* <div> */}
@@ -86,9 +88,32 @@ export default function Home() {
               </div>
             </div>
           </div>
+
+          <div
+            className="bg-muted/20 py-12 flex flex-col items-center justify-center"
+            id="demo"
+          >
+            <h2 className="mb-12 font-heading text-center text-5xl font-bold">
+              DEMO
+            </h2>
+
+            <div className="max-w-full min-w-[400px]">
+              <iframe
+                width="600"
+                height="400"
+                src="https://www.youtube.com/embed/T4hdvi-PFQE?si=Ppm1oDhgI8Q9lGNj"
+                title="YouTube video player"
+                frameBorder="0"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                referrerPolicy="strict-origin-when-cross-origin"
+                allowFullScreen
+              ></iframe>
+            </div>
+          </div>
+
           <div className="bg-muted/20 py-12">
             <div className="container mx-auto max-w-6xl px-4">
-              <h2 className="mb-8 text-center text-3xl font-bold">
+              <h2 className="mb-8 font-heading text-center text-4xl font-bold uppercase">
                 Key Features
               </h2>
               <div className="grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-4">
