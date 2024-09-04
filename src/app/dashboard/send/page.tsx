@@ -12,6 +12,8 @@ import { Button } from "@/components/ui/button";
 import { Label } from "@/components/ui/label";
 import { Input } from "@/components/ui/input";
 import { Card } from "@/components/ui/card";
+import { Alert, AlertDescription } from "@/components/ui/alert";
+import { Separator } from "@/components/ui/separator";
 
 const metadata = {
   title: "Payments Page",
@@ -66,6 +68,28 @@ export default function PaymentsPage() {
 
     try {
       setIsPaymentProcessing(true);
+
+      if (aptAmount <= 0 || aptAmount > 0.05) {
+        toast({
+          title: "Invalid amount",
+          variant: "destructive",
+          description:
+            "For testing purposes, we have restricted the amount between 0.01-0.05",
+        });
+
+        return;
+      }
+
+      if (!toAddress) {
+        toast({
+          title: "Invalid address",
+          variant: "destructive",
+          description: "Please enter a valid address",
+        });
+
+        return;
+      }
+
       const paymentPayload = await dropinInstance.requestPaymentMethod();
 
       const { nonce } = paymentPayload;
@@ -113,6 +137,26 @@ export default function PaymentsPage() {
 
       <div className="max-w-screen-sm">
         <div className="grid gap-2 mb-4">
+          <Alert>
+            <AlertDescription className="text-muted-foreground">
+              For testing purposes, we have restricted the amount between
+              0.01-0.05
+            </AlertDescription>
+          </Alert>
+
+          <Alert>
+            <AlertDescription className="text-muted-foreground">
+              <span className="font-bold">Card Number: </span>4111 1111 1111
+              1111
+            </AlertDescription>
+
+            <AlertDescription className="text-muted-foreground">
+              <span className="font-bold">Date of Expiry: </span>11/26
+            </AlertDescription>
+          </Alert>
+
+          <Separator className="my-4 w-9/12 mx-auto" />
+
           <div className="grid gap-1">
             <Label className="sr-only" htmlFor="email">
               To Address

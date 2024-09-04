@@ -9,6 +9,7 @@ import { Icons } from "@/components/icons";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
+import { Alert, AlertDescription } from "@/components/ui/alert";
 import { axiosInstance } from "@/lib/axios";
 import { toast } from "../ui/use-toast";
 
@@ -57,6 +58,12 @@ export function UserAuthForm({ className, ...props }: UserAuthFormProps) {
     <div className={cn("grid gap-6", className)} {...props}>
       <form onSubmit={onSubmit}>
         <div className="grid gap-2">
+          <Alert variant="default">
+            <AlertDescription className="text-muted-foreground">
+              Demo credentials provided below
+            </AlertDescription>
+          </Alert>
+
           <div className="grid gap-1">
             <Label className="sr-only" htmlFor="email">
               Email
@@ -107,7 +114,12 @@ export function UserAuthForm({ className, ...props }: UserAuthFormProps) {
           </span>
         </div>
       </div>
-      <Button variant="outline" type="button" disabled={true && isLoading}>
+      <Button
+        variant="outline"
+        type="button"
+        className="cursor-not-allowed"
+        disabled={true && isLoading}
+      >
         {isLoading ? (
           <Icons.spinner className="mr-2 h-4 w-4 animate-spin" />
         ) : (
